@@ -1,0 +1,3 @@
+An AI I wrote to maximise the score in a game of Threes a while back. Note that as per the instructions for the assignment, the AI is aware of every value that will be added to the game in advance.
+It takes a text file matching the form of that of the included input.txt.
+It outputs a text file listing the number of moves completed, the score and then each move made described by a string of chars eg. LLRDUL, is a left, left, right, down, up, left series of moves.
