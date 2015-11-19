@@ -4,7 +4,7 @@
 echo "Desired number of repetitions (1 to 5): "
 read beta #Desired number of bifurcations
 
-if ! [ "$scale" -eq "$scale" ]; then
+if ! [ "$beta" -eq "$beta" ]; then
 	echo "Input value not a number, set to max value..."
 elif (($beta>5)); then
 	echo "Input number too high, set to max value..."
@@ -34,24 +34,24 @@ do
     startrow=$(($currow-1)) #Row at which the current set of bifurcations began
     currow=$(($startrow))
     delta=$((2**(6-$beta))) #Update delta expression for new value of beta
-
+	echo "$currrow"
 	#Print angles part of this set of bifurcations
-    for ((currow; currow<($startrow+($delta/2))); currow++))
+    for ((currow; currow<($startrow+($delta/2)); currow++))
     do
 		#Print leading '_', the number to print is identical for all N or beta
         for ((leading=1;leading<19;leading++))
         do
             echo -n "_"
-        done
-        
+		done
 		#Print the fork for each repetition in the current set of bifurcations
         for ((repetition=0;repetition<(2**($beta-1));repetition++))
         do
             rowdiff=$(($currow-$startrow))
+			echo $currrow
             for ((j=1; j<(($delta/2)+$rowdiff); j++))
             do
                 echo -n "_"
-            done
+			done
             echo -n "1"
             for ((k=1; k<($delta-2*$rowdiff); k++))
             do
@@ -84,7 +84,7 @@ do
         done
 		
         #Print each repetition of the'stalk' for the set of bifurcations 
-        for ((repetition=0;repetition<($delta/2);repetition++))
+        for ((repetition=0;repetition<(2**($beta-1));repetition++))
         do
             for ((j=1; j<($delta); j++))
             do
