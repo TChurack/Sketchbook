@@ -34,9 +34,8 @@ do
     startrow=$(($currow-1)) #Row at which the current set of bifurcations began
     currow=$(($startrow))
     delta=$((2**(6-$beta))) #Update delta expression for new value of beta
-	echo "$currrow"
 	#Print angles part of this set of bifurcations
-    for ((currow; currow<($startrow+($delta/2)); currow++))
+    for ((currow; currow<$(($startrow+($delta/2))); currow++))
     do
 		#Print leading '_', the number to print is identical for all N or beta
         for ((leading=1;leading<19;leading++))
@@ -44,27 +43,25 @@ do
             echo -n "_"
 		done
 		#Print the fork for each repetition in the current set of bifurcations
-        for ((repetition=0;repetition<(2**($beta-1));repetition++))
+        for ((repetition=0; repetition<$((2**($beta-1))); repetition++))
         do
             rowdiff=$(($currow-$startrow))
-			echo $currrow
-            for ((j=1; j<(($delta/2)+$rowdiff); j++))
+            for ((j=1; j<$((($delta/2)+$rowdiff)); j++))
             do
                 echo -n "_"
-			done
+	    done
             echo -n "1"
-            for ((k=1; k<($delta-2*$rowdiff); k++))
+            for ((k=1; k<$(($delta-2*($rowdiff))); k++))
             do
                 echo -n "_"
             done
             echo -n "1"
-            for ((l=1; l<(($delta/2)+$rowdiff); l++))
+            for ((l=1; l<$((($delta/2)+$rowdiff)); l++))
             do
                 echo -n "_"
             done
             echo -n "_"
         done
-		
         #Print trailing '_', the number to print is identical for all N or beta
         for ((tailing=1;tailing<18;tailing++))
         do
@@ -72,32 +69,30 @@ do
         done
         echo "_"
     done
-    
     startrow=$currow
     currow=$(($startrow+1))
-    for ((currow; currow<=($startrow+($delta/2)); currow++))
+    for ((currow; currow<=$(($startrow+($delta/2))); currow++))
     do
 		#Print leading '_', the number to print is identical for all N or beta
         for ((leading=1;leading<19;leading++))
         do
             echo -n "_"
         done
-		
-        #Print each repetition of the'stalk' for the set of bifurcations 
-        for ((repetition=0;repetition<(2**($beta-1));repetition++))
+        #Print each repetition of the'stalk' for the set of bifurcations
+        for ((repetition=0;repetition<$((2**($beta-1)));repetition++))
         do
-            for ((j=1; j<($delta); j++))
+            for ((j=1; j<$(($delta)); j++))
             do
                 echo -n "_"
             done
             echo -n "1"
-            for ((j=1; j<($delta); j++))
+            for ((j=1; j<$(($delta)); j++))
             do
                 echo -n "_"
             done
             echo -n "_"
         done
-		
+
         #Print trailing '_', the number to print is identical for all N or beta
         for ((tailing=1;tailing<18;tailing++))
         do
@@ -105,5 +100,5 @@ do
         done
         echo "_"
     done
-    
+
 done
