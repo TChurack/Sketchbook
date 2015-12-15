@@ -13,8 +13,7 @@
  *
  * NB: Assumes graph vertices are labelled from 1 to N, where N is the number of nodes
  */
-
-import java.io.*;
+ 
 import java.util.*;
 
 public class Kruskal {
